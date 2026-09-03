@@ -1,0 +1,16 @@
+baseURL = ""
+languageCode = "en-us"
+title = "sneha-writes"
+timeZone = "Europe/Berlin"
+
+[params]
+  description = "A secret crevice of daily snippets, and a portfolio of thoughts."
+  tagline = "Daily snippets of a wandering mind, and a portfolio ready to steer your thoughts too."
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[markup.highlight]
+  noClasses = true
+  style = "monokai"
