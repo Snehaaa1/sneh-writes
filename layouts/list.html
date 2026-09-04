@@ -1,0 +1,28 @@
+{{ define "main" }}
+<header class="section-head">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+</header>
+
+{{ if eq .Section "blog" }}
+  <ul class="post-list big">
+    {{ range .RegularPages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+    </li>
+    {{ end }}
+  </ul>
+{{ else }}
+  <div class="card-grid">
+    {{ range .RegularPages }}
+    <a class="card" href="{{ .RelPermalink }}">
+      <span class="card-tag">{{ .Date.Format "Jan 2006" }}</span>
+      <h3>{{ .Title | markdownify | safeHTML }}</h3>
+      <p>{{ .Description }}</p>
+      {{ if .Params.coming_soon }}<span class="card-cta muted">Coming soon</span>{{ else }}<span class="card-cta">Read →</span>{{ end }}
+    </a>
+    {{ end }}
+  </div>
+{{ end }}
+{{ end }}
