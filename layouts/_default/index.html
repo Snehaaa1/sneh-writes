@@ -7,7 +7,7 @@
 <section class="section">
   <h2 class="section-title">Selected Work</h2>
   <div class="card-grid">
-    {{ range .Site.GetPage "work".RegularPages }}
+    {{ range (.Site.GetPage "work").RegularPages }}
     <a class="card" href="{{ .RelPermalink }}">
       <span class="card-tag">{{ .Date.Format "Jan 2006" }}</span>
       <h3>{{ .Title | markdownify | safeHTML }}</h3>
@@ -21,7 +21,7 @@
 <section class="section">
   <h2 class="section-title">From the Blog</h2>
   <ul class="post-list">
-    {{ range first 4 .Site.GetPage "blog".RegularPages }}
+    {{ range (first 4 (.Site.GetPage "blog").RegularPages) }}
     <li>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       <span class="meta">{{ .Date.Format "Jan 2, 2006" }}</span>
