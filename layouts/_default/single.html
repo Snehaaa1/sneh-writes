@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-head">
+    {{ if and .Date (not .Date.IsZero) }}<span class="meta">{{ .Date.Format "January 2, 2006" }}</span>{{ end }}
+    <h1>{{ .Title | markdownify | safeHTML }}</h1>
+  </header>
+  {{ if .Params.coming_soon }}
+  <p class="notice">This piece is still being written — check back soon.</p>
+  {{ end }}
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
